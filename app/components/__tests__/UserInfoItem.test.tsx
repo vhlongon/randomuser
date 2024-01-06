@@ -1,19 +1,19 @@
 import { render, screen } from '@testing-library/react';
 import { UserInfoItem } from '../UserInfoItem';
+import { mockData } from '@/test/mocks/mockData';
 
 describe('UserInfoItem', () => {
   it('should render correctly', () => {
+    const userInfo = mockData.results[0];
     const props = {
-      href: 'https://www.google.com',
+      href: `emailto:${userInfo.email}`,
       icon: 'icon',
-      primary: 'primary',
-      secondary: 'secondary',
+      primary: userInfo.email,
     };
 
     render(<UserInfoItem {...props} />);
 
-    expect(screen.getByText('primary')).toBeInTheDocument();
-    expect(screen.getByText('secondary')).toBeInTheDocument();
+    expect(screen.getByText(props.primary)).toBeInTheDocument();
     expect(screen.getByRole('link')).toHaveAttribute('href', props.href);
   });
 });

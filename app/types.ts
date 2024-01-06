@@ -1,5 +1,6 @@
 import { z } from 'zod';
-import { infoSchema, userSchema } from './utils/data';
+import { dataSchema } from './utils/data';
 
-export type User = z.infer<typeof userSchema>;
-export type Info = z.infer<typeof infoSchema>;
+export type Data = z.infer<typeof dataSchema>;
+export type User = Data['results'][number];
+export type Info = Data['info'];

@@ -1,6 +1,7 @@
 import { z } from 'zod';
+import { config } from '../config';
 
-export const userSchema = z.object({
+const userSchema = z.object({
   gender: z.union([z.literal('female'), z.literal('male')]),
   name: z.object({
     title: z.string(),
@@ -57,14 +58,14 @@ export const userSchema = z.object({
   nat: z.string(),
 });
 
-export const infoSchema = z.object({
+const infoSchema = z.object({
   seed: z.string(),
   results: z.number().positive(),
   page: z.number().positive(),
   version: z.string(),
 });
 
-const dataSchema = z.object({
+export const dataSchema = z.object({
   results: z.array(userSchema),
   info: infoSchema,
 });
@@ -89,7 +90,7 @@ export const validateData = (data: unknown) => {
 export const fetchData = async () => {
   // simulate more network latency
   await sleep(0);
-  const res = await fetch('https://randomuser.me/api/', {
+  const res = await fetch(config.apiUrl, {
     cache: 'no-cache',
   });
 

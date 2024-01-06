@@ -1,29 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import { UserCard } from '../UserCard';
-import { User } from '@/app/types';
+import { mockData } from '@/test/mocks/mockData';
 
 describe('UserCard', () => {
   it('should render correctly', () => {
     const props = {
-      user: {
-        login: { username: 'username' },
-        name: { first: 'first', last: 'last', title: 'Mr' },
-        email: 'email',
-        location: {
-          street: { name: 'street' },
-          city: 'city',
-          state: 'state',
-          country: 'country',
-        },
-        picture: { thumbnail: 'https://userimage.jpg' },
-        phone: 'phone',
-      } as User,
-      info: {
-        page: 1,
-        results: 1,
-        seed: 'abc',
-        version: '1.0',
-      },
+      user: mockData.results[0],
+      info: mockData.info,
     };
 
     render(<UserCard {...props} />);

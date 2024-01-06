@@ -1,17 +1,13 @@
-import { Info } from '@/app/types';
+import { mockData } from '@/test/mocks/mockData';
 import { render, screen } from '@testing-library/react';
-import { ExtraInfo } from '../ExtraInfo';
 import { userEvent } from '@testing-library/user-event';
+import { ExtraInfo } from '../ExtraInfo';
 
 describe('ExtraInfo', () => {
-  const props: Info = {
-    page: 1,
-    results: 1,
-    seed: 'abc',
-    version: '1.0',
-  };
   it('should render button and toggle content when clicked', async () => {
     const user = userEvent.setup();
+
+    const props = mockData.info;
 
     render(<ExtraInfo {...props} />);
 
@@ -19,8 +15,12 @@ describe('ExtraInfo', () => {
 
     await user.click(button);
 
-    expect(await screen.findByText('seed: abc')).toBeInTheDocument();
-    expect(await screen.findByText('version: 1.0')).toBeInTheDocument();
-    expect(await screen.findByText('results: 1')).toBeInTheDocument();
+    expect(await screen.findByText(`seed: ${props.seed}`)).toBeInTheDocument();
+    expect(
+      await screen.findByText(`version: ${props.version}`)
+    ).toBeInTheDocument();
+    expect(
+      await screen.findByText(`results: ${props.results}`)
+    ).toBeInTheDocument();
   });
 });
