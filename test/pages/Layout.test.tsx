@@ -3,8 +3,15 @@ import { render, screen } from '@testing-library/react';
 
 describe('Layout', () => {
   it('should render children', () => {
-    const children = <div>test children</div>;
-    render(<Layout>{children}</Layout>);
+    vi.spyOn(console, 'error').mockImplementation(() => undefined);
+
+    const Content = () => 'test children';
+
+    render(
+      <Layout>
+        <Content />
+      </Layout>
+    );
 
     expect(screen.getByText('test children')).toBeInTheDocument();
   });
