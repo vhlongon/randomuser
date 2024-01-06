@@ -39,7 +39,7 @@ export const UserCard = ({
 
   return (
     <Card
-      className="min-w-80 p-4"
+      className="min-w-96 p-4"
       sx={{
         bgcolor: deepPurple['50'],
         borderColor: deepPurple['100'],
