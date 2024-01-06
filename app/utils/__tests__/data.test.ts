@@ -1,4 +1,4 @@
-import { validateData } from './data';
+import { validateData } from '../data';
 
 describe('data utils', () => {
   describe('validateData', () => {
