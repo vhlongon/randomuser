@@ -15,7 +15,10 @@ import { UserInfoItem } from './UserInfoItem';
 import { deepPurple } from '@mui/material/colors';
 
 type UserCardProps = {
-  user: User;
+  user: Pick<
+    User,
+    'email' | 'name' | 'location' | 'picture' | 'phone' | 'login'
+  >;
   info: Info;
 };
 export const UserCard = ({
@@ -29,7 +32,7 @@ export const UserCard = ({
   },
   info,
 }: UserCardProps) => {
-  const address = `${location.street.name}, ${location.city}, ${location.state}, ${location.country}`;
+  const address = `${location.street.name}, ${location.city}, ${location.state}`;
 
   return (
     <Card
@@ -42,7 +45,7 @@ export const UserCard = ({
     >
       <CardHeader
         title={
-          <Typography variant="h6" component="h6">
+          <Typography variant="h6" component="h2">
             {username}
           </Typography>
         }
@@ -62,7 +65,7 @@ export const UserCard = ({
       <CardContent>
         <Typography
           variant="h5"
-          component="h5"
+          component="h1"
           className="flex items-end gap-2"
         >
           <Typography variant="subtitle1" component="span">
@@ -80,7 +83,7 @@ export const UserCard = ({
           />
           <UserInfoItem
             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-              address
+              address + ', ' + location.country
             )}`}
             icon={<HomeIcon />}
             primary={`${location.street.name}, ${location.city}`}
