@@ -87,9 +87,9 @@ export const validateData = (data: unknown) => {
   return { user: results[0], info };
 };
 
-export const fetchData = async () => {
+export const fetchData = async (delay = 0) => {
   // simulate more network latency
-  await sleep(0);
+  await sleep(delay);
   const res = await fetch(config.apiUrl, {
     cache: 'no-cache',
   });
