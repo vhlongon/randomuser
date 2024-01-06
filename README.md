@@ -9,7 +9,7 @@ The project uses:
 - [Material UI](https://mui.com/material-ui/) for styling and components
 - Next js [Server components](https://nextjs.org/docs/app/building-your-application/rendering/server-components) for fetching data on the server side
 - [Zod](https://github.com/colinhacks/zod) for runtime type validation
-- [Vitest](https://vitest.dev/) for testing
+- [Vitest](https://vitest.dev/) and [Testing library](https://testing-library.com/) for testing
 - [MSW](https://mswjs.io/) for mocking the API calls in tests
 
 Make sure you have [pnpm](https://pnpm.io/) installed. If you don't, you can install it with `npm i -g pnpm`.
