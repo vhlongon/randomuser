@@ -16,6 +16,7 @@ describe('UserPage', () => {
       location: { street, city, state, country },
       picture,
       phone,
+      dob,
     } = user;
 
     const subheading = screen.getByRole('heading', { level: 2 });
@@ -29,6 +30,7 @@ describe('UserPage', () => {
     const addressUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
       `${street.name}, ${city}, ${state}, ${country}`
     )}`;
+    const birthDate = screen.getByText(new Date(dob.date).toLocaleDateString());
 
     expect(subheading).toHaveTextContent(username);
     expect(image).toHaveAttribute('src', picture.thumbnail);
@@ -36,5 +38,6 @@ describe('UserPage', () => {
     expect(emailLink).toHaveAttribute('href', `mailto:${email}`);
     expect(phoneLink).toHaveAttribute('href', `tel:${phone}`);
     expect(addressLink).toHaveAttribute('href', addressUrl);
+    expect(birthDate).toBeInTheDocument();
   });
 });

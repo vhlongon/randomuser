@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ReactNode } from 'react';
 
 type UserInfoItemProps = {
-  href: string;
+  href?: string;
   icon: ReactNode;
   primary: string;
   secondary?: string;
@@ -18,14 +18,29 @@ export const UserInfoItem = ({
   primary,
   secondary,
 }: UserInfoItemProps) => {
-  return (
-    <ListItem disablePadding>
-      <Link href={href} passHref className="flex items-center">
-        <ListItemAvatar>
-          <Avatar sx={{ bgcolor: deepPurple['500'] }}>{icon}</Avatar>
-        </ListItemAvatar>
-        <ListItemText primary={primary} secondary={secondary} />
-      </Link>
-    </ListItem>
+  const content = (
+    <>
+      <ListItemAvatar>
+        <Avatar sx={{ bgcolor: deepPurple['500'] }}>{icon}</Avatar>
+      </ListItemAvatar>
+      <ListItemText primary={primary} secondary={secondary} />
+    </>
   );
+
+  if (href) {
+    return (
+      <ListItem disablePadding>
+        <Link
+          href={href}
+          target="_blank"
+          passHref
+          className="flex items-center"
+        >
+          {content}
+        </Link>
+      </ListItem>
+    );
+  }
+
+  return <ListItem disablePadding>{content}</ListItem>;
 };
