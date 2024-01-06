@@ -18,6 +18,7 @@ const UserCardSkeleton = () => {
   return (
     <Card
       data-testid="loading-user-card"
+      aria-label="loading user card"
       className="min-w-80"
       sx={{
         bgcolor: deepPurple['50'],
