@@ -11,7 +11,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
-    "coverage:e2e": "playwright test show-report "
+    "report:e2e": "pnpm test:e2e && npx playwright show-report"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
