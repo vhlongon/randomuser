@@ -1,5 +1,7 @@
 # Randomuser
 
+[![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/vhlongon/82eba7b0273e5192367b02da755a7fd6/raw/randomuser__heads_main.json)]
+
 This is a simple [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 it fetches data from [randomuser.me](https://randomuser.me/api/) and displays the user information in a card.

@@ -35,31 +35,14 @@ jobs:
       - name: Run unit and integration tests coverage
         run: pnpm test:ci
 
-      - name: Test Coverage Comment
-        id: coverageComment
-        uses: MishaKav/jest-coverage-comment@main
+      - name: Publish Results Badge
+        uses: wjervis7/vitest-badge-action@v1.0.0
+        if: success() || failure() # run whether steps succeed or not
         with:
-          hide-comment: true
-          coverage-summary-path: ./coverage/coverage-summary.json
-
-      - name: Check the output coverage
-        shell: bash
-        run: |
-          echo "Coverage Percentage - ${{ steps.coverageComment.outputs.coverage }}"
-          echo "Coverage Color - ${{ steps.coverageComment.outputs.color }}"
-          echo "Summary HTML - ${{ steps.coverageComment.outputs.summaryHtml }}"
-
-      - name: Create the badge
-        if: github.ref == 'refs/heads/main'
-        uses: schneegans/dynamic-badges-action@v1.6.0
-        with:
-          auth: ${{ secrets.JEST_COVERAGE_COMMENT }}
-          gistID: 5e90d640f8c212ab7bbac38f72323f80
-          filename: jest-coverage-comment__main.json
-          label: Coverage
-          message: ${{ steps.coverageComment.outputs.coverage }}%
-          color: ${{ steps.coverageComment.outputs.color }}
-          namedLogo: javascript
+          result-type: lines
+          gist-token: ${{ secrets.GIST_TOKEN }} # if you want to upload badge to gist
+          gist-url: https://gist.github.com/{org/user}/{gist_id}
+          upload-badge: ${{ github.base_ref == 'refs/heads/main' }}
 
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
