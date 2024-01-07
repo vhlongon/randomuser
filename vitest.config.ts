@@ -11,6 +11,7 @@ export default defineConfig({
       provider: 'istanbul',
       exclude: [
         ...defaultExclude,
+        'playwright.config.ts',
         '.next/**',
         'next.config.js',
         'postcss.config.js',
