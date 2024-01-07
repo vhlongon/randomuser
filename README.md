@@ -4,6 +4,8 @@
 
 This is a simple [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+![Screenshot](randomuser.png)
+
 it fetches data from [randomuser.me](https://randomuser.me/api/) and displays the user information in a card.
 
 The project uses:
