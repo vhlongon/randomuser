@@ -11,6 +11,7 @@ The project uses:
 - [Zod](https://github.com/colinhacks/zod) for runtime type validation
 - [Vitest](https://vitest.dev/) and [Testing library](https://testing-library.com/) for testing
 - [MSW](https://mswjs.io/) for mocking the API calls in tests
+- [Playwright](https://playwright.dev/) for e2e testing
 
 Make sure you have [pnpm](https://pnpm.io/) installed. If you don't, you can install it with `npm i -g pnpm`.
 
@@ -34,6 +35,12 @@ or
 
 ```bash
 pnpm coverage
+```
+
+To run the e2e tests run:
+
+```bash
+pnpm test:e2e
 ```
 
 to get a coverage report
