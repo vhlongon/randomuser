@@ -38,7 +38,7 @@ pnpm test
 or
 
 ```bash
-pnpm coverage
+pnpm test:ci
 ```
 
 to get a coverage. See the result report under `coverage/`
@@ -47,4 +47,10 @@ To run the e2e tests run:
 
 ```bash
 pnpm test:e2e
+```
+
+to run in ui mode
+
+```bash
+pnpm test:e2e --ui
 ```
