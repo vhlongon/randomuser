@@ -95,7 +95,7 @@ export const fetchData = async (delay = 0) => {
   });
 
   /* when throwing an error next will load the error component */
-  /* istanbul ignore next */
+  /* istanbul ignore if -- @preserve */
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
