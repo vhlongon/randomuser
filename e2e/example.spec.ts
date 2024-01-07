@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test('shows user info', async ({ page }) => {
   await page.goto('/');
+  page.getByTestId('loading-user-card').waitFor({ state: 'hidden' });
 
   await expect(page).toHaveTitle(/Random user/);
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
@@ -29,4 +30,15 @@ test('shows user info', async ({ page }) => {
   await expect(page.getByText(/results:/, { exact: false })).toBeVisible();
   await expect(page.getByText(/page:/, { exact: false })).toBeVisible();
   await expect(page.getByText(/version:/, { exact: false })).toBeVisible();
+
+  const showLessInfoButton = page.getByRole('button', {
+    name: /Hide extra info/,
+  });
+
+  await showLessInfoButton.click();
+
+  await expect(page.getByText(/seed:/, { exact: false })).not.toBeVisible();
+  await expect(page.getByText(/results:/, { exact: false })).not.toBeVisible();
+  await expect(page.getByText(/page:/, { exact: false })).not.toBeVisible();
+  await expect(page.getByText(/version:/, { exact: false })).not.toBeVisible();
 });
