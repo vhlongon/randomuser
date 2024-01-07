@@ -9,7 +9,7 @@
     "lint": "next lint",
     "tsc": "tsc --noEmit",
     "test": "vitest",
-    "coverage": "vitest run --coverage",
+    "test:ci": "vitest run --coverage",
     "test:e2e": "playwright test",
     "report:e2e": "pnpm test:e2e && npx playwright show-report"
   },
