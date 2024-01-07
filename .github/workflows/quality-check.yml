@@ -40,7 +40,7 @@ jobs:
         if: success() || failure() # run whether steps succeed or not
         with:
           result-type: lines
-          gist-token: ${{ secrets.GIST_TOKEN }} # if you want to upload badge to gist
+          gist-token: ${{ secrets.GIST_TOKEN }}
           gist-url: https://gist.github.com/vhlongon/82eba7b0273e5192367b02da755a7fd6
           upload-badge: ${{ github.base_ref == 'refs/heads/main' }}
 
