@@ -80,11 +80,13 @@ export const UserCard = ({
         </Typography>
         <List>
           <UserInfoItem
+            data-testid="email"
             href={`mailto:${email}`}
             icon={<EmailIcon />}
             primary={email}
           />
           <UserInfoItem
+            data-testid="address"
             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
               address + ', ' + location.country
             )}`}
@@ -93,11 +95,13 @@ export const UserCard = ({
             secondary={location.country}
           />
           <UserInfoItem
+            data-testid="phone"
             href={`tel:${phone}`}
             icon={<PhoneIcon />}
             primary={phone}
           />
           <UserInfoItem
+            data-testid="dob"
             icon={<CalendarMonthIcon />}
             primary={formattedDate}
             secondary={`Age: ${dob.age}`}
