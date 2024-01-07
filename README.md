@@ -37,10 +37,10 @@ or
 pnpm coverage
 ```
 
+to get a coverage. See the result report under `coverage/`
+
 To run the e2e tests run:
 
 ```bash
 pnpm test:e2e
 ```
-
-to get a coverage report
