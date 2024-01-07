@@ -39,10 +39,13 @@ jobs:
         uses: wjervis7/vitest-badge-action@v1.0.0
         if: success() || failure() # run whether steps succeed or not
         with:
-          result-type: lines
-          gist-token: ${{ secrets.GIST_TOKEN }}
-          gist-url: https://gist.github.com/vhlongon/82eba7b0273e5192367b02da755a7fd6
-          upload-badge: ${{ github.base_ref == 'refs/heads/main' }}
+          result-type: statements
+          upload-badge: false
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: './badge.svg'
 
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
