@@ -1,6 +1,6 @@
 # Randomuser
 
-![Coverage Badge](https://raw.githubusercontent.com/gist/vhlongon/b1f395b2532fc512e4b3ce4fa294e1b9/raw/7a31f7df0ced0b0c2c598dfc7ba23a4b59425f97/badge.svg)
+![Coverage Badge](https://raw.githubusercontent.com/gist/vhlongon/b1f395b2532fc512e4b3ce4fa294e1b9/raw/badge.svg)
 
 This is a simple [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
