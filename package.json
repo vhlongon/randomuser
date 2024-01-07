@@ -10,7 +10,8 @@
     "tsc": "tsc --noEmit",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "coverage:e2e": "playwright test show-report "
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
