@@ -1,5 +1,4 @@
 import { defineConfig, devices } from '@playwright/test';
-import path from 'path';
 
 // Use process.env.PORT by default and fallback to port 3000
 const PORT = process.env.PORT || 3000;
@@ -12,11 +11,11 @@ export default defineConfig({
   // Timeout per test
   timeout: 30 * 1000,
   // Test directory
-  testDir: path.join(__dirname, 'e2e'),
+  testDir: './e2e',
   // If a test fails, retry it additional 2 times
   retries: 2,
   // Artifacts folder where screenshots, videos, and traces are stored.
-  outputDir: 'test-results/',
+  outputDir: './playwright-output',
 
   // Run your local dev server before starting the tests:
   // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
@@ -41,6 +40,7 @@ export default defineConfig({
     //   ignoreHTTPSErrors: true,
     // },
   },
+  reporter: [['html', { open: 'never', outputDir: './playwright-report' }]],
 
   projects: [
     {
