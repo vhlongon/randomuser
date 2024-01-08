@@ -12,13 +12,12 @@ import { TestQueryProvider } from '../mocks/utils';
 
 describe('UserPage', () => {
   it('should render correctly user data when request is successful', async () => {
+    server.use(getUserHandler({ delay: 1000 }));
     const user = userEvent.setup();
 
     render(<UserPage />, { wrapper: TestQueryProvider });
 
-    await user.click(
-      await screen.findByRole('button', { name: /get random user/i })
-    );
+    await user.click(screen.getByRole('button', { name: /get random user/i }));
 
     await waitForElementToBeRemoved(() => screen.getByLabelText('loading...'));
 

@@ -8,13 +8,13 @@ import LoadingPage from './loading';
 import { fetchData } from './utils/data';
 
 export default function Home() {
-  const { data, isLoading, refetch, error } = useQuery({
+  const { data, isLoading, refetch, isFetching, error } = useQuery({
     queryFn: fetchData,
     queryKey: ['user'],
     enabled: false,
   });
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <LoadingPage />;
   }
 
