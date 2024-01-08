@@ -23,4 +23,4 @@ export const getUserHandler = (opts?: HandlerOptions) => {
   });
 };
 
-export const handlers = [getUserHandler()];
+export const handlers = [getUserHandler({ delay: 100 })];

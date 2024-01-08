@@ -1,14 +1,28 @@
-import { render, screen } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import UserPage from '../../app/page';
+import { getUserHandler } from '../mocks/handlers';
 import { mockData } from '../mocks/mockData';
+import { server } from '../mocks/server';
+import { TestQueryProvider } from '../mocks/utils';
 
 describe('UserPage', () => {
-  it('should render correctly', async () => {
-    const Result = await UserPage();
+  it('should render correctly user data when request is successful', async () => {
+    const user = userEvent.setup();
 
-    render(Result);
+    render(<UserPage />, { wrapper: TestQueryProvider });
 
-    const user = mockData.results[0];
+    await user.click(
+      await screen.findByRole('button', { name: /get random user/i })
+    );
+
+    await waitForElementToBeRemoved(() => screen.getByLabelText('loading...'));
+
+    const userData = mockData.results[0];
     const {
       login: { username },
       name: { first, last, title },
@@ -17,7 +31,7 @@ describe('UserPage', () => {
       picture,
       phone,
       dob,
-    } = user;
+    } = userData;
 
     const subheading = screen.getByRole('heading', { level: 2 });
     const image = screen.getByRole('img');
@@ -39,5 +53,21 @@ describe('UserPage', () => {
     expect(phoneLink).toHaveAttribute('href', `tel:${phone}`);
     expect(addressLink).toHaveAttribute('href', addressUrl);
     expect(birthDate).toBeInTheDocument();
+  });
+
+  it('should render correctly error message when request is failed', async () => {
+    const errorMessage = 'Some error message';
+    server.use(getUserHandler({ error: errorMessage }));
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    const user = userEvent.setup();
+
+    render(<UserPage />, { wrapper: TestQueryProvider });
+
+    await user.click(screen.getByRole('button', { name: /get random user/i }));
+
+    expect(await screen.findByText('Error')).toBeInTheDocument();
+    expect(await screen.findByText('"Failed to fetch"')).toBeInTheDocument();
+    expect(console.error).toHaveBeenCalledWith(TypeError('Failed to fetch'));
   });
 });

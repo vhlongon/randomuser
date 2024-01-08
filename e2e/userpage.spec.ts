@@ -2,6 +2,11 @@ import { expect, test } from '@playwright/test';
 
 test('shows user info', async ({ page }) => {
   await page.goto('/');
+
+  const fetchButton = page.getByRole('button', { name: 'Get random user' });
+
+  await fetchButton.click();
+
   page.getByTestId('loading-user-card').waitFor({ state: 'hidden' });
 
   await expect(page).toHaveTitle(/Random user/);

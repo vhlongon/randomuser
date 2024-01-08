@@ -4,14 +4,14 @@
 
 This is a simple [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-![Screenshot](randomuser.png)
+![Screenshot](screenshot.png)
 
 it fetches data from [randomuser.me](https://randomuser.me/api/) and displays the user information in a card.
 
 The project uses:
 
 - [Material UI](https://mui.com/material-ui/) for styling and components
-- Next js [Server components](https://nextjs.org/docs/app/building-your-application/rendering/server-components) for fetching data on the server side
+- [React query](https://tanstack.com/query/latest/docs/react/overview) for fetching data
 - [Zod](https://github.com/colinhacks/zod) for runtime type validation
 - [Vitest](https://vitest.dev/) and [Testing library](https://testing-library.com/) for testing
 - [MSW](https://mswjs.io/) for mocking the API calls in tests

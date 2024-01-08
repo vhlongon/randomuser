@@ -9,7 +9,7 @@ type ErrorPageProps = {
   };
 };
 
-export default function Error({ error }: ErrorPageProps) {
+export default function ErrorPage({ error }: ErrorPageProps) {
   useEffect(() => {
     console.error(error);
   }, [error]);

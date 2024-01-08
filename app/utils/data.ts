@@ -70,8 +70,6 @@ export const dataSchema = z.object({
   info: infoSchema,
 });
 
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
 export const validateData = (data: unknown) => {
   const validatedData = dataSchema.safeParse(data);
 
@@ -87,9 +85,7 @@ export const validateData = (data: unknown) => {
   return { user: results[0], info };
 };
 
-export const fetchData = async (delay = 0) => {
-  // simulate more network latency
-  await sleep(delay);
+export const fetchData = async () => {
   const res = await fetch(config.apiUrl, {
     cache: 'no-cache',
   });
