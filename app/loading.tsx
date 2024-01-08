@@ -9,7 +9,7 @@ export default function LoadingPage() {
       className="flex min-h-screen flex-col justify-center items-center p-24 gap-8"
     >
       <UserCardSkeleton />
-      <Skeleton variant="rectangular" width={160} height={50} />
+      <Skeleton variant="rectangular" width={186} height={50} />
     </main>
   );
 }
