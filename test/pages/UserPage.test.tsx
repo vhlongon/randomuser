@@ -66,8 +66,10 @@ describe('UserPage', () => {
 
     await user.click(screen.getByRole('button', { name: /get random user/i }));
 
+    const fetchErrorMessage = 'Failed to fetch';
+
     expect(await screen.findByText('Error')).toBeInTheDocument();
-    expect(await screen.findByText('"Failed to fetch"')).toBeInTheDocument();
-    expect(console.error).toHaveBeenCalledWith(TypeError('Failed to fetch'));
+    expect(await screen.findByText(fetchErrorMessage)).toBeInTheDocument();
+    expect(console.error).toHaveBeenCalledWith(TypeError(fetchErrorMessage));
   });
 });
