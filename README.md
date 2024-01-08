@@ -31,6 +31,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Running tests
 
+Run for the unit and integration tests:
+
 ```bash
 pnpm test
 ```
@@ -43,13 +45,13 @@ pnpm test:ci
 
 to get a coverage. See the result report under `coverage/`
 
-To run the e2e tests run:
+Run for the e2e tests:
 
 ```bash
 pnpm test:e2e
 ```
 
-to run in ui mode
+or run in ui mode
 
 ```bash
 pnpm test:e2e --ui
