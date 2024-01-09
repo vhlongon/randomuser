@@ -11,7 +11,7 @@ export const getUserHandler = (opts?: HandlerOptions) => {
   const { error, delay: delayTime = 0 } = opts || {};
 
   return http.get(config.apiUrl, async () => {
-    if (delay) {
+    if (delayTime) {
       await delay(delayTime);
     }
 
