@@ -8,6 +8,7 @@ export default defineConfig({
     setupFiles: ['./test/setup.ts'],
     exclude: [...defaultExclude, 'e2e/**'],
     coverage: {
+      reportOnFailure: true,
       provider: 'istanbul',
       reporter: ['text-summary', 'text', 'html', 'lcov', 'json-summary'],
       exclude: [

@@ -1,5 +1,5 @@
 import { config } from '@/app/config';
-import { http, HttpResponse, delay } from 'msw';
+import { HttpResponse, delay, http } from 'msw';
 import { mockData } from './mockData';
 
 type HandlerOptions = Partial<{

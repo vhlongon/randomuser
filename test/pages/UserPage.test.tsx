@@ -1,8 +1,4 @@
-import {
-  render,
-  screen,
-  waitForElementToBeRemoved,
-} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import UserPage from '../../app/page';
 import { getUserHandler } from '../mocks/handlers';
@@ -19,8 +15,6 @@ describe('UserPage', () => {
 
     await user.click(screen.getByRole('button', { name: /get random user/i }));
 
-    await waitForElementToBeRemoved(() => screen.getByLabelText('loading...'));
-
     const userData = mockData.results[0];
     const {
       login: { username },
@@ -32,7 +26,7 @@ describe('UserPage', () => {
       dob,
     } = userData;
 
-    const subheading = screen.getByRole('heading', { level: 2 });
+    const subheading = await screen.findByRole('heading', { level: 2 });
     const image = screen.getByRole('img');
     const heading = screen.getByRole('heading', { level: 1 });
     const emailLink = screen.getByRole('link', { name: email });
