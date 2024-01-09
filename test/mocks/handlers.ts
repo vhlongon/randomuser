@@ -1,5 +1,5 @@
 import { config } from '@/app/config';
-import { http, HttpResponse, delay } from 'msw';
+import { HttpResponse, delay, http } from 'msw';
 import { mockData } from './mockData';
 
 type HandlerOptions = Partial<{
@@ -11,7 +11,7 @@ export const getUserHandler = (opts?: HandlerOptions) => {
   const { error, delay: delayTime = 0 } = opts || {};
 
   return http.get(config.apiUrl, async () => {
-    if (delay) {
+    if (delayTime) {
       await delay(delayTime);
     }
 
