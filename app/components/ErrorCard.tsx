@@ -1,4 +1,5 @@
-import { Card, CardContent, Container, Typography } from '@mui/material';
+import ErrorIcon from '@mui/icons-material/Error';
+import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
 
 type ErrorCardProps = {
@@ -7,15 +8,23 @@ type ErrorCardProps = {
 
 export const ErrorCard = ({ error }: ErrorCardProps) => {
   return (
-    <Card>
-      <CardContent sx={{ color: red['500'] }}>
-        <Typography variant="h5" component="h1">
-          Error
-        </Typography>
-        <Typography variant="body1" component="p">
-          <Container maxWidth="sm" className="mt-2" component="span">
-            <code className="">{error}</code>
-          </Container>
+    <Card
+      className="min-w-96 p-4"
+      sx={{
+        color: red['500'],
+      }}
+    >
+      <CardHeader
+        title={
+          <Typography variant="h5" component="h1">
+            Error
+          </Typography>
+        }
+        avatar={<ErrorIcon color="error" />}
+      />
+      <CardContent>
+        <Typography component="p">
+          <code>{error}</code>
         </Typography>
       </CardContent>
     </Card>
