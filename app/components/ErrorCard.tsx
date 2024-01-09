@@ -2,11 +2,11 @@ import ErrorIcon from '@mui/icons-material/Error';
 import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
 
-type ErrorCardProps = {
-  error: string;
-};
-
-export const ErrorCard = ({ error }: ErrorCardProps) => {
+export const ErrorCard = ({
+  error,
+}: {
+  error: Error & { digest?: string };
+}) => {
   return (
     <Card
       className="min-w-96 p-4"
@@ -24,7 +24,7 @@ export const ErrorCard = ({ error }: ErrorCardProps) => {
       />
       <CardContent>
         <Typography component="p">
-          <code>{error}</code>
+          <code>{error.message}</code>
         </Typography>
       </CardContent>
     </Card>

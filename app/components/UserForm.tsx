@@ -9,7 +9,7 @@ import UserCardSkeleton from './UserCardSkeleton';
 
 export const UserForm = () => {
   const [data, setData] = useState<null | { user: User; info: Info }>(null);
-  const [error, setError] = useState<null | string>(null);
+  const [error, setError] = useState<null | Error>(null);
   const [isPending, startTransition] = useTransition();
 
   if (isPending) {
@@ -31,9 +31,7 @@ export const UserForm = () => {
         const data = await fetchData();
         setData(data);
       } catch (error) {
-        const errorMessage =
-          error instanceof Error ? error.message : JSON.stringify(error);
-        setError(errorMessage);
+        setError(error as Error);
         console.error(error);
       }
     });

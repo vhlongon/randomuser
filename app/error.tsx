@@ -16,7 +16,7 @@ export default function ErrorPage({ error }: ErrorPageProps) {
 
   return (
     <main className="flex min-h-screen flex-col justify-center items-center p-24 gap-8">
-      <ErrorCard error={error.message} />
+      <ErrorCard error={error} />
     </main>
   );
 }
