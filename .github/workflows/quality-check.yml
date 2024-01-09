@@ -35,6 +35,12 @@ jobs:
       - name: Run unit and integration tests coverage
         run: pnpm test:ci
 
+      - name: 'Report Coverage'
+        # Set if: always() to also generate the report if tests are failing
+        # Only works if you set `reportOnFailure: true` in your vite config as specified above
+        if: always()
+        uses: davelosert/vitest-coverage-report-action@v2
+
       - name: Publish Results Badge
         uses: wjervis7/vitest-badge-action@v1.0.0
         if: success() || failure() # run whether steps succeed or not
