@@ -40,7 +40,7 @@ export const UserForm = () => {
   };
 
   return (
-    <form>
+    <form className="flex flex-col justify-center items-center gap-8">
       {data && <UserCard user={data.user} info={data.info} />}
       <Button
         onClick={handleAction}
